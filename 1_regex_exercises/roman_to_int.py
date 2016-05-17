@@ -15,11 +15,11 @@ def roman_to_int(s):
 	if not re.search (pattern, s):
 		return 'Invalid Roman Numeral'
 
-	x = re.findall(pattern, s)
-	print x
+	# x = re.findall(pattern, s)
+	# print x
 	
 	result = 0
-	for item in x:
+	for item in re.findall(pattern, s):
 		for i in item:
 			if i == '':
 				continue
