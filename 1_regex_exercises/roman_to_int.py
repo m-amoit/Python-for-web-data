@@ -10,13 +10,10 @@ def roman_to_int(s):
 			"IX": 9,   "V" : 5,   "IV": 4,   "I" : 1 
 			}
 
-	pattern = ('(^M?M?M?M?)(CM|CD|D?C?C?C?)(XC|XL|L?X?X?X?)(IX|IV|V?I?I?I?)$')
+	pattern = ('^(M{0,4})(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$')
 	
 	if not re.search (pattern, s):
 		return 'Invalid Roman Numeral'
-
-	# x = re.findall(pattern, s)
-	# print x
 	
 	result = 0
 	for item in re.findall(pattern, s):
@@ -30,6 +27,7 @@ def roman_to_int(s):
 					result += keys[item]
 	return result
 
+print roman_to_int('MCMLXX')
 
 
 
