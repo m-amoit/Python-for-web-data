@@ -3,13 +3,24 @@ import sqlite3
 conn = sqlite3.connect('music.sqlite3')
 cur = conn.cursor()
 
-cur.execute('DROP TABLE IF EXISTS Tracks ')
-# Removes Tracks table if it exists
-# DROP TABLE command deletes the table and all 
-# of its contents. Has no 'undo'
-cur.execute('CREATE TABLE Tracks (title TEXT, plays INTEGER)')
-# creates a table named Tracks with text column 
-# named title and integer column named plays
+''' Insert rows into the table'''
+cur.execute('INSERT INTO Tracks (title, plays) VALUES (?, ? )',
+	('Thunderstruck', 20 ))
+cur.execute('INSERT INTO Tracks (title, plays) VALUES (?, ? )',
+	('My Way', 15))
+conn.commit() #commit() writes data to database file
 
-conn.close()
+print 'Tracks:'
+
+'''Retrieve rows from table'''
+cur.execute('SELECT title, plays FROM Tracks')
+for row in cur: #cursor() is iterable. Data read on demand as loop executes
+	print row
+
+#output: u' - unicode strings capable of storing non-Latin character sets
+
+# cur.execute('DELETE FROM Tracks WHERE plays < 100')
+# conn.commit()
+
+cur.close()
 
