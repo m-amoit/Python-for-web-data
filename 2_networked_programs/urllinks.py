@@ -11,5 +11,12 @@ soup = BeautifulSoup(html)
 
 tags = soup('a')
 
+# for tag in tags:
+# 	print tag.get('href', None)
+
 for tag in tags:
-	print tag.get('href', None)
+	# Look at the parts of a tag
+	print 'TAG:', tag
+	print 'URL:', tag.get('href', None)
+	print 'Content:', tag.contents[0]
+	print 'Attrs:', tag.attrs 
