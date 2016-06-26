@@ -34,7 +34,7 @@ def roman_to_int(s):
 					result += keys[item]
 	return result
 
-print roman_to_int('MCMLXX')
+
 
 
 

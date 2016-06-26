@@ -16,3 +16,20 @@ class RomanToIntTestCase(TestCase):
 	def test_inverted(self):
 		'''Test for switched order.'''
 		self.assertEqual(roman_to_int('MCMXCIX'), 1999)
+
+	def test_hundreds(self):
+		'''Test for hundreds.'''
+		self.assertEqual(roman_to_int('CDXLVIII'), 448)
+
+	def test_large_numbers(self):
+		'''Test for valid large numbers.'''
+		self.assertEqual(roman_to_int('MMMMDCCCLXXXVIII'), 4888)
+
+	def test_large_numbers_invalid(self):
+		'''Test for Invalid large numbers.'''
+		self.assertEqual(roman_to_int('MMMMCMXCLXXXVIII'), 'Invalid Roman Numeral')
+
+	def test_small_numbers(self):
+		'''Test for small numbers.'''
+		self.assertEqual(roman_to_int('VIII'), 8)
+		
